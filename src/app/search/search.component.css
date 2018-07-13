@@ -1,0 +1,41 @@
+#input{
+    
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    height: 90px;
+    padding: 40px;
+    font-size:30px;
+   
+}
+input::-webkit-input-placeholder {
+	padding:  4px;
+    font-size: 25px;
+    line-height: 3;
+}
+#typed{
+    font-size: 320%;
+        /*font-family:Lucida Console;
+        font-color:#40D7D7;
+*/    text-align: center;
+    margin-left: 13%;
+    padding-top: 30%;
+}
+#select{
+    width: 248px;
+    height: 90px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    font-size: 22px
+}
+.options{
+width: 248px;
+}
+.autoComplete{
+    margin-left: 263px;
+    margin-top: 24px;
+
+}

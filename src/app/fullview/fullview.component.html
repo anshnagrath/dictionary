@@ -1,0 +1,21 @@
+<div class="container">
+<div class="panel panel-default">
+  <br><br><br>
+  <div class="panel-heading" id="searchedWord" >{{(inflectionName)?inflectionName+':':""}}	<span class="glyphicon glyphicon-volume-up"></span> </div>
+  <ul class="list-group">
+  <!--   <li *ngFor="let inflections of inlfection[0].lexicalEntries[i].lexicalCategory ; let i = index" class="list-group-item">{{inflections}}</li> -->
+  	<li class="list-group-item">{{inlfection[0].lexicalEntries[0].lexicalCategory}}</li>
+
+  	<li class="list-group-item">Gramatical features:
+    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].grammaticalFeatures ;">{{items.text}}:{{items.type}}</p></li>
+    <li class="list-group-item">Inflection of:
+    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+
+
+
+</div>	
