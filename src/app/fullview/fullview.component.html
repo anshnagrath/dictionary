@@ -3,7 +3,7 @@
 	  <br><br><br>
 	  <div class="panel-heading" id="searchedWord">{{(inflectionName)?inflectionName+':':""}}
 
-	  <span class="fa" (click)="playAudio()" > &#xf028; </span> </div>
+	  <span class="fa" (click)="playAudio()" *ngIf="this.res"> &#xf028; </span> </div>
 	   <div *ngFor = "let lex of word;let i = index" >
 	    <ul class="list-group">
 	    <li class = "list-group-item">
