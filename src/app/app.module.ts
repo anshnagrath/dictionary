@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { HttpModule } from '@angular/http';
     {path: '',component:SearchComponent,pathMatch:'full'}, 
     {path: 'search',component:SearchComponent,pathMatch:'full'},  
     {path: 'fullview/:word/:id',component:FullviewComponent,pathMatch:'full'},
+    {path: 'error',component:ErrorviewComponent,pathMatch:'full'},
     {path: '*',component:ErrorviewComponent,pathMatch:'full'},
     {path: '**',component:ErrorviewComponent,pathMatch:'full'}
       ])

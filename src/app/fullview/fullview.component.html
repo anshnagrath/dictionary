@@ -1,21 +1,59 @@
-<div class="container">
-<div class="panel panel-default">
-  <br><br><br>
-  <div class="panel-heading" id="searchedWord" >{{(inflectionName)?inflectionName+':':""}}	<span class="glyphicon glyphicon-volume-up"></span> </div>
-  <ul class="list-group">
-  <!--   <li *ngFor="let inflections of inlfection[0].lexicalEntries[i].lexicalCategory ; let i = index" class="list-group-item">{{inflections}}</li> -->
-  	<li class="list-group-item">{{inlfection[0].lexicalEntries[0].lexicalCategory}}</li>
+	<div class="container">
+	<div class="panel panel-default">
+	  <br><br><br>
+	  <div class="panel-heading" id="searchedWord">{{(inflectionName)?inflectionName+':':""}}
 
-  	<li class="list-group-item">Gramatical features:
-    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].grammaticalFeatures ;">{{items.text}}:{{items.type}}</p></li>
-    <li class="list-group-item">Inflection of:
-    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div>
+	  <span class="fa" (click)="playAudio()" > &#xf028; </span> </div>
+	   <div *ngFor = "let lex of word;let i = index" >
+	    <ul class="list-group">
+	    <li class = "list-group-item">
+	     <p style="margin-top: 10px;font-size: 25px"><strong>{{lex.lexicalCategory}}:</strong></p>
+	    </li>	
+	    <li  class="list-group-item">
+	    <p style="margin-top: 10px;font-size: 20px;"><strong>1- Senses:</strong></p>
+	    <p style="overflow:hidden;white-space:nowrap;" *ngFor="let item of lex.entries[0].senses;"  > 
+	    <span *ngIf= "item.domains && item.definitions" >
+	    <strong>&nbsp;{{item.domains[0]}}:</strong> </span><br>
+	    <span *ngIf="item.definitions" >&#9679;&nbsp;{{item.definitions[0]}}</span>
+	
+	    </p></li>
+	    <li class="list-group-item">Inflection of:
+	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
+	   
+	    <li class="list-group-item">Gramatical features:
+	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].grammaticalFeatures ;">{{items.text}}:{{items.type}}</p></li>
+	    <li class="list-group-item">Inflection of:
+	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
+	   <!--  <li class="list-group-item">
+	    <p >etymologies:</p>
+	  	<p *ngFor = "let data of this.word">{{data.entries[0].etymologies[0]}}</p>
+	    </li> -->
+	    <li class="list-group-item">
+	    <p>domains:</p>	
+	    <p *ngFor = "let domains of this.domains">{{domains}}</p>
+	    </li>
+	    <li class="list-group-item">
+	    <p>examples:</p>	
+	    <p *ngFor = "let examples of this.examples">{{examples.text}}</p>
+	    </li>
+	    <li class="list-group-item">
+	    <p>definitions:</p>	
+	    <p *ngFor = "let definitions of this.definitions">{{definitions}}</p>
+	    </li>
+	    <li class="list-group-item">
+	    <p>subdomains:</p>	
+	    <p *ngFor = "let subdomains of this.subdomains">{{subdomains}}</p>
+	    </li>
+	    <li class="list-group-item">
+	    <p>subsenses:</p>	
+	    <p *ngFor = "let subsenses of this.subsenses">{{subsenses}}</p>
+	    
+	    </li>
 
+	   </ul>
+	   <br><br>
+	</div>
 
+	</div>
 
-</div>	
+	</div>	

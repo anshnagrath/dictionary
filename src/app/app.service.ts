@@ -3,23 +3,26 @@ import {HttpClient,HttpErrorResponse} from '@angular/common/http';
 import {catchError,tap} from 'rxjs/operators';
 import {Headers} from '@angular/http';
 import {Http} from '@angular/http';
+import {Router} from '@angular/router'
 import {Observable} from 'rxjs';
+import {throwError} from 'rxjs';
+
 @Injectable()
+
 export class AppService {
 
-
-constructor(private http:HttpClient){
+constructor(private http:HttpClient,private router:Router){
 	console.log('look')
+       
  }
 
-private httpErrorHandler (err:HttpErrorResponse){
+private httpErrorHandler (error:HttpErrorResponse){
  let errorMessage = ''
- if (err.error instanceof Error){
-    errorMessage = `An error occured:${err.error.message}`
-  }else{
-    errorMessage = `An error occured: ${err.status},error message is:${err.message}`
-  }
-  return Observable.throw(errorMessage);
+ console.log(this.router,'how')
+ console.log('catch excecuted',error['status'])
+ if(error['status'] == 404)
+this.router.navigate(['/error'])
+ return throwError("wrong input") 
 }
 async getAllSearchResult (lang,word){	
 let get =  this.http.get(`/api/search/${lang}?q=${word}$prefix=true`).pipe(tap( res=> console.log('data')),catchError(this.httpErrorHandler)).toPromise();
@@ -37,6 +40,5 @@ return get
 }
 async getentries(lang,word){
 let get =  this.http.get(`/api/entries/${lang}/${word}`).pipe(tap( res=> console.log('data')),catchError(this.httpErrorHandler)).toPromise()
-return get
 }
 }
