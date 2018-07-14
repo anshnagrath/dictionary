@@ -12,16 +12,16 @@ import {throwError} from 'rxjs';
 export class AppService {
 
 constructor(private http:HttpClient,private router:Router){
-	console.log('look')
-       
+	console.log('look')   
  }
 
 private httpErrorHandler (error:HttpErrorResponse){
+
  let errorMessage = ''
  console.log(this.router,'how')
  console.log('catch excecuted',error['status'])
  if(error['status'] == 404)
-this.router.navigate(['/error'])
+ this.router.navigate(['/error'])
  return throwError("wrong input") 
 }
 async getAllSearchResult (lang,word){	
@@ -35,10 +35,12 @@ console.log(get)
 return get
 }
 async getInflection(lang,word){
-let get =  this.http.get(`/api/inflections/${lang}/${word}`).pipe(tap( res=> console.log('data')),catchError(this.httpErrorHandler)).toPromise()
-return get
+let get =  this.http.get(`/api/inflections/${lang}/${word}`).toPromise()
+if(get)return get;
+//else this.router.navigate(['/error']);
 }
-async getentries(lang,word){
-let get =  this.http.get(`/api/entries/${lang}/${word}`).pipe(tap( res=> console.log('data')),catchError(this.httpErrorHandler)).toPromise()
+async getentries(lang,word){ 
+ let get =this.http.get(`/api/entries/${lang}/${word}`).toPromise().catch(err=> this.router.navigate(['/error']))
+ return get
 }
 }
