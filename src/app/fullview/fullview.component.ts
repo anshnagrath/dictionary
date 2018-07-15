@@ -12,7 +12,8 @@ export class FullviewComponent implements OnInit {
   public audio;
   public inflectionName;
   public inlfection;
-  public domains;examples;shortdefinations;subsenses;subdomains;subShortdef;
+  public domains = [];
+  public senses = [];
   public entities;
   public definitions;res;
   public lexicalCategory = [];
@@ -30,27 +31,20 @@ export class FullviewComponent implements OnInit {
 
   getalldata() {
     this.appService.getInflection(this.lang, this.word).then((res) => {
-      //console.log(res,'sdasdcasdcasdc')
       if (res && res['results']) this.inflectionName = res['results'][0]['id'];
-      //console.log(this.inflectionName,'check this out')
       if (res && res['results']) this.inlfection = res['results']
-
-
-
     })
 
     this.appService.getentries(this.lang, this.word).then((res) => {
-     console.log('check here for error')
+    this.domains=[];
+    this.senses =[];
     console.log(res,'res check')
    if(res){
      this.res =res;
     this.lexicalCategory = [];
     this.word = res['results'][0].lexicalEntries;
     console.log(this.word,'**************rt');
-    console.log(this.word[0].entries[0].senses[0].definitions[0],'check this word adcasdcasdc')
-    this.definitions  = (this.word[0].entries[0].senses[0].definitions)?this.word[0].entries[0].senses[0].definitions:this.word[0].entries[0].senses[0].definitions[0];
-    this.examples     = (this.word[0].entries[0].senses[0].examples)?this.word[0].entries[0].senses[0].examples:this.word[0].entries[0].senses[0].examples;
-    this.shortdefinations = (this.word[0].entries[0].senses[0].example)?this.word[0].entries[0].senses[0].example:this.word[0].entries[0].senses[0].short_definitions;
+
     this.word.forEach((element) => {
         this.lexicalCategory.push(element.lexicalCategory)
 
