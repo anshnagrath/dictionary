@@ -1,54 +1,67 @@
-	<div class="container">
+	<div class="container col-lg-12 ">
 	<div class="panel panel-default">
 	  <br><br><br>
 	  <div class="panel-heading" id="searchedWord">{{(inflectionName)?inflectionName+':':""}}
 
-	  <span class="fa" (click)="playAudio()" > &#xf028; </span> </div>
+	  <span class="fa" (click)="playAudio()" *ngIf="this.res"> &#xf028; </span>
+	</div>
+	   <!-- category> <--->
 	   <div *ngFor = "let lex of word;let i = index" >
 	    <ul class="list-group">
 	    <li class = "list-group-item">
 	     <p style="margin-top: 10px;font-size: 25px"><strong>{{lex.lexicalCategory}}:</strong></p>
-	    </li>	
-	    <li  class="list-group-item">
-	    <p style="margin-top: 10px;font-size: 20px;"><strong>1- Senses:</strong></p>
-	    <p style="overflow:hidden;white-space:nowrap;" *ngFor="let item of lex.entries[0].senses;"  > 
-	    <span *ngIf= "item.domains && item.definitions" >
-	    <strong>&nbsp;{{item.domains[0]}}:</strong> </span><br>
-	    <span *ngIf="item.definitions" >&#9679;&nbsp;{{item.definitions[0]}}</span>
-	
+	    </li>
+	    <!--etymologies>  <----->
+	    <li *ngIf= "lex.entries[0].etymologies" class="list-group-item">
+	    <p style="margin-top: 10px;font-size: 20px;">
+	    <span *ngIf= "lex.entries[0].etymologies" ><strong >1- Etymologies:</strong></span>
+	    <p style="overflow:hidden;white-space:nowrap;" *ngFor="let item of lex.entries;let j=index"   >
+	    <span  *ngIf= "item.etymologies" ><br>
+	    &#9679;&nbsp;&nbsp;&nbsp;{{item.etymologies}} </span><br>
+			<br>
+			<span *ngFor= "let data of item.grammaticalFeatures"><strong>Text:&nbsp;&nbsp;</strong>{{data.text}}&nbsp;&nbsp;&nbsp;<strong>Type:&nbsp;&nbsp;</strong>{{data.type}}</span>
+		</p></li>
+
+	    <!--senses>        <----->
+	    <!-- <li *ngIf="item.senses" class="list-group-item">
+	    <p style="margin-top: 10px;font-size: 20px;"><strong>2- Senses:</strong></p>
+	    <p style="overflow:hidden;white-space:nowrap;" *ngFor="let senses of item.senses;"  >
+	    <span  *ngIf= "senses.domains && senses.definitions" >
+	    <strong>&nbsp;{{senses.domains}}:</strong> </span><br>
+	    <span *ngIf="item.definitions" >&#9679;&nbsp;{{senses.definitions}}</span>
 	    </p></li>
-	    <li class="list-group-item">Inflection of:
-	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
-	   
+	     --><!---- inflection of> <-
+	    <li class="list-group-item" >
+	    <p style="margin-top:10px;font-size: 20px"><strong>2- Inflection of:</strong></p>
+	    <br>
+	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">&#9679;&nbsp;{{items.text}}</p></li>
+
 	    <li class="list-group-item">Gramatical features:
 	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].grammaticalFeatures ;">{{items.text}}:{{items.type}}</p></li>
 	    <li class="list-group-item">Inflection of:
 	    <p  *ngFor="let items of inlfection[0].lexicalEntries[0].inflectionOf ;">{{items.text}}</p></li>
-	   <!--  <li class="list-group-item">
-	    <p >etymologies:</p>
-	  	<p *ngFor = "let data of this.word">{{data.entries[0].etymologies[0]}}</p>
-	    </li> -->
 	    <li class="list-group-item">
-	    <p>domains:</p>	
+	    <p>examples:</p>
+	    <p *ngFor = "let examples of lex.entries[0].senses ">{{examples.text}}</p>
+	    </li>
+	    <li class="list-group-item">
+	    <p>domains:</p>
 	    <p *ngFor = "let domains of this.domains">{{domains}}</p>
 	    </li>
+
 	    <li class="list-group-item">
-	    <p>examples:</p>	
-	    <p *ngFor = "let examples of this.examples">{{examples.text}}</p>
-	    </li>
-	    <li class="list-group-item">
-	    <p>definitions:</p>	
+	    <p>definitions:</p>
 	    <p *ngFor = "let definitions of this.definitions">{{definitions}}</p>
 	    </li>
 	    <li class="list-group-item">
-	    <p>subdomains:</p>	
+	    <p>subdomains:</p>
 	    <p *ngFor = "let subdomains of this.subdomains">{{subdomains}}</p>
 	    </li>
 	    <li class="list-group-item">
-	    <p>subsenses:</p>	
-	    <p *ngFor = "let subsenses of this.subsenses">{{subsenses}}</p>
-	    
-	    </li>
+	    <p>subsenses:</p>
+	    <p *ngFor = "let subsenses of this.subsenses">{{subsenses}}</p> -->
+
+	  <!--   </li> -->
 
 	   </ul>
 	   <br><br>
@@ -56,4 +69,4 @@
 
 	</div>
 
-	</div>	
+	</div>
