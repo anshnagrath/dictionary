@@ -18,29 +18,29 @@ constructor(private http:HttpClient,private router:Router){
 private errorHandler (error){
  	if(error.status == 404){
 	throwError("Not Found",error);
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 	else if(error.status == 400){
 	throwError("Bad Request",error)
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 	else if(error.status == 403){
 	throwError("authentication failure",error)
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}else if(error.status == 500){
 	throwError("internal server error",error)
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 	else if(error.status == 414){
 	throwError("Request URI Too Long",error)
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 	else if(error.status == 502){
 	throwError("Bad Gateway",error)
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 	else(throwError("Gateway timeout",error))
-	this.router.navigate([`/error/${error}`])
+	this.router.navigate([`/error/${error.status}`])
 	}
 async getAllSearchResult (lang,word){
 let get =  this.http.get(`/api/search/${lang}?q=${word}$prefix=true`).toPromise().catch(err=> this.errorHandler(err));
@@ -72,7 +72,7 @@ throwError("not found",error)
 }
 else if(error.status == 403){
 throwError("authentication failure",error)
-this.router.navigate([`/error/${error}`])
+this.router.navigate([`/error/${error.status}`])
 }else if(error.status == 500){
 throwError("internal server error check internet",error)
 }

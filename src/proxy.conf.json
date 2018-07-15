@@ -7,8 +7,8 @@
     "pathRewrite": {"^/api" : ""},
     "headers": {
       "Accept": "application/json",
-      "app_id": "7b89f2b3",
-      "app_key": "dbdf795b9049e26641dd2860b376b94a"
+      "app_id": "0bc91a49",
+      "app_key": "f7f1175ad602e8f155da2a2978b9f466"
     }
   }
 }
