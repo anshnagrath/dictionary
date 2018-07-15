@@ -2,7 +2,7 @@
 <div id = "typedjs" class="wrapper">
   <p><strong>Oxford Living Dictionaries</strong></p>
   <p><strong>Making things understandable</strong></p>
-  </div>   
+  </div>
   <br><br>
   <span id="typed"> </span>
 <br><br>
@@ -16,14 +16,14 @@
   <option  [ngValue]="button.id" placeholder = "select a dictionary"*ngFor="let button of buttons;let i = index"  >{{button.source}}</option>
   </select>
   </div>
- <input  type="text" id="input" (keyup)="search($event);nextState($event)"class="form-control form-rounded" 
+ <input  type="text" id="input" (keyup)="search($event);nextState($event)"class="form-control form-rounded"
    [(ngModel)]="data"
-  (ngModelChange)="search()"  placeholder="Search for any word"> 
+  (ngModelChange)="search()"  placeholder="Search for any word">
    </div>
  </div>
 </div>
    <div class="row">
-       <div class="autoComplete" *ngIf="this.limit >= 3" > 
+       <div class="autoComplete" *ngIf="this.limit >= 3" >
                 <ul  *ngFor="let suggestion of searchData" >
                     <li>
                         <a (click)="selectedItem(suggestion);">{{suggestion}}</a>
@@ -32,4 +32,3 @@
             </div>
  </div>
 </div>
-

@@ -20,7 +20,7 @@
 	    &#9679;&nbsp;&nbsp;&nbsp;{{item.etymologies}} </span><br>
 			<br>
 
-			<span *ngFor= "let data of item.grammaticalFeatures"><strong>Text:&nbsp;&nbsp;</strong>{{data.text}}&nbsp;&nbsp;&nbsp;<strong>Type:&nbsp;&nbsp;</strong>{{data.type}}</span>
+			<span *ngFor= "let data of item.grammaticalFeatures"><strong>Text:&nbsp;&nbsp;</strong>{{data.text}}&nbsp;&nbsp;&nbsp;<strong>Type:&nbsp;&nbsp;</strong>{{data.type}}<br></span>
 			<hr>
 			<span *ngIf= "item.senses" ><strong >2- Senses:</strong></span>
 			<p style="overflow:hidden;white-space:wrap;" *ngFor="let sense of item.senses;let k= index">
