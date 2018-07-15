@@ -14,7 +14,7 @@ export class FullviewComponent implements OnInit {
   public inlfection;
   public domains;examples;shortdefinations;subsenses;subdomains;subShortdef;
   public entities;
-  public definitions;res;
+  public definitions;
   public lexicalCategory = [];
 
   constructor(public activatedRoute: ActivatedRoute, public appService: AppService, public router:Router) {
@@ -38,12 +38,11 @@ export class FullviewComponent implements OnInit {
 
 
     })
-
     this.appService.getentries(this.lang, this.word).then((res) => {
      console.log('check here for error')
     console.log(res,'res check')
    if(res){
-     this.res =res;
+
     this.lexicalCategory = [];
     this.word = res['results'][0].lexicalEntries;
     console.log(this.word,'**************rt');
