@@ -23,14 +23,14 @@ import { HttpModule } from '@angular/http';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-    {path: '',component:SearchComponent,pathMatch:'full'}, 
-    {path: 'search',component:SearchComponent,pathMatch:'full'},  
+    {path: '',component:SearchComponent,pathMatch:'full'},
+    {path: 'search',component:SearchComponent,pathMatch:'full'},
     {path: 'fullview/:word/:id',component:FullviewComponent,pathMatch:'full'},
-    {path: 'error',component:ErrorviewComponent,pathMatch:'full'},
+    {path: 'error/:error',component:ErrorviewComponent,pathMatch:'full'},
     {path: '*',component:ErrorviewComponent,pathMatch:'full'},
     {path: '**',component:ErrorviewComponent,pathMatch:'full'}
       ])
-   
+
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
