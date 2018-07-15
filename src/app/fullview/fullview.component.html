@@ -27,15 +27,22 @@
 				<span *ngIf="sense.domains && sense.definitions"><strong>Domain:</strong></span>
 				<span *ngIf="sense.domains " >&nbsp;&nbsp;{{sense.domains}}</span><br>
 			 <span *ngIf=sense.definitions >&#9679;&nbsp;{{sense.definitions}}</span>
-
 			 <!-- <hr> --><br><br>
 			 <span *ngIf= "sense.examples && k==0" ><strong >3- Examples:</strong></span><br>
-			<span *ngFor="let examples of sense.examples" >&#9679;&nbsp;{{examples.text}}<br></span>
-		 </p>	</span>
+			<span *ngFor="let examples of sense.examples; let l = index" >&#9679;&nbsp;{{examples.text}}<br></span><br>
+
+		  <span *ngFor="let syno of this.synonyms; let m =index; " >
+			<span *ngIf ="sense.examples && k==0 && m==0 "><strong>4- Synonym</strong><br> </span>
+		  <span *ngIf ="syno.lexCat == lex.lexicalCategory && sense.examples && k==0 ">		 {{syno.synonym}},&nbsp;</span></span><br><br>
+			<span *ngFor="let ayno of this.antonyms; let n =index; " >
+			<span *ngIf ="ayno.lexCat == lex.lexicalCategory && sense.examples && k==0 && n==0  "><strong>5- Antonym</strong><br> </span>
+		  <span *ngIf ="ayno.lexCat == lex.lexicalCategory && sense.examples && k==0 ">		 {{ayno.antonyms}},&nbsp;</span></span>
+
+
+
+		</span></p>
 			</li>
-
-
-	   </ul>
+		</ul>
 	   <br><br>
 	</div>
 

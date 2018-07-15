@@ -12,7 +12,7 @@ import {throwError} from 'rxjs';
 export class AppService {
 
 constructor(private http:HttpClient,private router:Router){
-	console.log('look')   
+	console.log('look')
  }
 
 private httpErrorHandler (error:HttpErrorResponse){
@@ -22,9 +22,9 @@ private httpErrorHandler (error:HttpErrorResponse){
  console.log('catch excecuted',error['status'])
  if(error['status'] == 404)
  this.router.navigate(['/error'])
- return throwError("wrong input") 
+ return throwError("wrong input")
 }
-async getAllSearchResult (lang,word){	
+async getAllSearchResult (lang,word){
 let get =  this.http.get(`/api/search/${lang}?q=${word}$prefix=true`).pipe(tap( res=> console.log('data')),catchError(this.httpErrorHandler)).toPromise();
 return get
 }
@@ -39,8 +39,12 @@ let get =  this.http.get(`/api/inflections/${lang}/${word}`).toPromise()
 if(get)return get;
 //else this.router.navigate(['/error']);
 }
-async getentries(lang,word){ 
+async getentries(lang,word){
  let get =this.http.get(`/api/entries/${lang}/${word}`).toPromise().catch(err=> this.router.navigate(['/error']))
  return get
+}
+async getSnoAno(lang,word){
+let get =this.http.get(`/api/entries/${lang}/${word}/synonyms;antonyms`).toPromise().catch(err=> this.router.navigate(['/error']))
+  return get
 }
 }

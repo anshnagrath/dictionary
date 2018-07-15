@@ -12,8 +12,10 @@ export class FullviewComponent implements OnInit {
   public audio;
   public inflectionName;
   public inlfection;
-  public domains = [];
-  public senses = [];
+  public antonyms = [];
+  public syno;
+  public synonyms = [];
+
   public entities;
   public definitions;res;
   public lexicalCategory = [];
@@ -34,10 +36,46 @@ export class FullviewComponent implements OnInit {
       if (res && res['results']) this.inflectionName = res['results'][0]['id'];
       if (res && res['results']) this.inlfection = res['results']
     })
+    this.appService.getSnoAno(this.lang,this.word).then((res)=>{
+    console.log(res,'syno ano')
+        this.antonyms = [];
+        this.synonyms = [];
+      this.syno = res['results'][0].lexicalEntries;
+    this.syno.forEach((element)=>{
+    let obj = {};
+    let obj1 = {};
+    let lex = element.lexicalCategory;
 
+
+    element.entries.forEach((ele)=>{
+      obj ={}
+      obj1 ={}
+    ele.senses.forEach((sense)=>{
+       obj={}
+       obj1 = {}
+        if(sense.antonyms) sense.antonyms.forEach((ana)=>{
+        obj = {}
+        obj['lexCat']= lex;
+        obj['antonyms']= ana.text ;
+        this.antonyms.push(obj);
+        console.log(this.antonyms,'obj check')
+
+         })
+        if(sense.synonyms) sense.synonyms.forEach((syno)=>{
+          obj1={}
+          obj1['lexCat']= lex;
+          obj1['synonym']= syno.text
+          this.synonyms.push(obj1)
+        })
+      })
+
+    })
+
+
+    })
+    console.log(this.antonyms,'please')
+    })
     this.appService.getentries(this.lang, this.word).then((res) => {
-    this.domains=[];
-    this.senses =[];
     console.log(res,'res check')
    if(res){
      this.res =res;
