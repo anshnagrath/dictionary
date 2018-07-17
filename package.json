@@ -26,7 +26,6 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "rxjs": "^6.2.1",
-    "typed.js": "^2.0.8",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
