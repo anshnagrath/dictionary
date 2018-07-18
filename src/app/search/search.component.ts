@@ -30,7 +30,9 @@ search(event?){
  this.searchData =[];
 
  this.appService.getAllSearchResult((this.selectedId)?this.selectedId:'en',this.data).then(res=>{ 
+ console.log('result')
  res['results'].forEach((results)=>{
+
  this.searchData.push(results.word);
  this.searchData = this.searchData.slice(0,8)
 })
