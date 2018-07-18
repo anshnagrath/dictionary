@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppService} from '../app.service';
 import {Router} from '@angular/router'
-import Typed from 'typed.js';
 import {$,jQuery} from 'jquery';
 import {HttpParams} from '@angular/common/http';
 @Component({
