@@ -22,12 +22,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-  var typed = new Typed('#typed', {
-    stringsElement: "#typedjs",
-    backSpeed:40,
-    typeSpeed:40,
-    loop:true,
-  });
+
   }
 
 
